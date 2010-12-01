@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRunConfiguration name="Local Test Run" id="0ee5af7e-fd13-46e0-8d07-f170e906983c" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Description>This is a default test run configuration for a local test run.</Description>
+  <CodeCoverage enabled="true" keyFile="WpfPropertyGrid\WpfPropertyGrid.snk">
+    <Regular>
+      <CodeCoverageItem binaryFile="WpfPropertyGrid\bin\Debug\System.Windows.Controls.WpfPropertyGrid.dll" pdbFile="WpfPropertyGrid\bin\Debug\System.Windows.Controls.WpfPropertyGrid.pdb" instrumentInPlace="true" />
+    </Regular>
+  </CodeCoverage>
+  <TestTypeSpecific />
+</TestRunConfiguration>

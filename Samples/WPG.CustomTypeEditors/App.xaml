@@ -1,0 +1,138 @@
+﻿<Application 
+  x:Class="Sample4.CustomTypeEditors.App"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:pg="http://schemas.denisvuyka.wordpress.com/wpfpropertygrid"
+  xmlns:TK="http://schemas.microsoft.com/wpf/2008/toolkit"
+  xmlns:editors="clr-namespace:Sample4.CustomTypeEditors.MyEditors"
+  xmlns:local="clr-namespace:Sample4.CustomTypeEditors"
+  xmlns:sys="clr-namespace:System;assembly=mscorlib"
+  StartupUri="Window1.xaml">
+  
+  <Application.Resources>
+
+    <local:FontList x:Key="FontFamilyList"/>
+    <local:FontSizeList x:Key="FontSizeList"/>
+    <local:XmlLanguageList x:Key="XmlLanguageList"/>
+    <local:FontStyleConverter x:Key="FontStyleConverter"/>
+    <local:FontWeightConverter x:Key="FontWeightConverter"/>
+    <local:EmptyValueConverter x:Key="emptyValueConverter"/>
+    
+    <pg:ExpanderHeaderWidthConverter x:Key="expanderHeaderWidthConverter"/>
+    
+    <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+    <local:DefaultPercentConverter x:Key="DefaultPercentConverter"/>
+    
+    <DataTemplate x:Key="{x:Static local:LocalResources.PercentEditorKey}">
+      <Grid>        
+        <TextBox x:Name="Editor" 
+                 Text="{Binding Value, Mode=TwoWay, Converter={StaticResource DefaultPercentConverter}, TargetNullValue={x:Static sys:String.Empty}}"
+                 />
+      </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static local:LocalResources.XmlLanguageEditorKey}">
+      <ComboBox 
+      x:Name="PART_editor"      
+      SelectedValue="{Binding Value}" 
+      ItemsSource="{Binding Source={StaticResource XmlLanguageList}}"
+      IsEnabled="{Binding IsEditable}"
+      />
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static local:LocalResources.FileBrowserEditorKey}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="0" Text="{Binding StringValue}" IsReadOnly="True" />
+
+        <Button Grid.Column="1" Margin="2,0,0,0" Content="..." Width="20" 
+              Command="pg:PropertyEditorCommands.ShowDialogEditor"
+              CommandParameter="{Binding}"
+              Visibility="{Binding IsEditable, Converter={StaticResource booleanToVisibilityConverter}}"/>
+      </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MyDateEditorInlineTemplate">
+      <TK:DatePicker SelectedDate="{Binding Value, Mode=TwoWay}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MyPointInlineEditorTemplate">
+      <Expander>
+        <Expander.Header>
+          <TextBox x:Name="PART_editor"                 
+                 Text="{Binding Path=Value}" 
+                 Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Mode=OneWay, Path=ActualWidth, Converter={StaticResource expanderHeaderWidthConverter}, ConverterParameter=-30}"/>
+        </Expander.Header>
+        <StackPanel Margin="5">
+          <editors:PointEditor Style="{DynamicResource {x:Type Slider}}"
+                             EditValue="{Binding Path=Value, Converter={StaticResource emptyValueConverter}}" 
+                             DisplayMember="X"
+                             Minimum="0" Maximum="1" TickFrequency="0.1"
+                             AutoToolTipPrecision="2" ToolTip="X property"/>
+          <editors:PointEditor Style="{DynamicResource {x:Type Slider}}"
+                             EditValue="{Binding Path=Value, Converter={StaticResource emptyValueConverter}}" 
+                             DisplayMember="Y"
+                             Minimum="0" Maximum="1" TickFrequency="0.1"
+                             AutoToolTipPrecision="2" ToolTip="Y property"/>
+        </StackPanel>
+      </Expander>
+    </DataTemplate>
+        
+    <DataTemplate x:Key="MyCustomExtendedTemplate_Inline">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="0" Text="{Binding StringValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
+        <Button Grid.Column="1" Margin="2,0,0,0" Content="[...]" Width="20" Command="pg:PropertyEditorCommands.ShowExtendedEditor" CommandParameter="{Binding}"/>
+      </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MyCustomExtendedTemplate_Extended">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Text="{Binding StringValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" TextWrapping="Wrap"/>
+      </Grid>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="TextCategoryEditor">      
+      <StackPanel Margin="5">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <ComboBox 
+                    Grid.Column="0"
+                    Margin="2"
+                    ItemsSource="{Binding Source={StaticResource FontFamilyList}}" 
+                    DisplayMemberPath="FamilyNames.Values[0]"
+                    SelectedItem="{Binding [FontFamily].PropertyValue.Value}"/>
+          <ComboBox 
+                    Grid.Column="1"
+                    Margin="2"
+                    ItemsSource="{Binding Source={StaticResource FontSizeList}}"
+                    SelectedItem="{Binding [FontSize].PropertyValue.Value}"/>
+        </Grid>
+        <StackPanel Orientation="Horizontal">
+          <CheckBox 
+                    Margin="2"
+                    Content="Bold"
+                    IsChecked="{Binding Path=[FontWeight].PropertyValue.Value, Converter={StaticResource FontWeightConverter}}"/>
+          <CheckBox 
+                    Margin="2"
+                    Content="Italic"
+                    IsChecked="{Binding Path=[FontStyle].PropertyValue.Value, Converter={StaticResource FontStyleConverter}}"/>
+        </StackPanel>
+      </StackPanel>
+    </DataTemplate>
+
+  </Application.Resources>
+  
+</Application>

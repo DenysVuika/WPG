@@ -1,0 +1,17 @@
+﻿<Window 
+  x:Class="DialogEditor.Window1"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="clr-namespace:DialogEditor"
+  xmlns:pg="http://schemas.denisvuyka.wordpress.com/wpfpropertygrid"
+  WindowStartupLocation="CenterScreen"
+  Title="How do I: Create Dialog Editor" Height="300" Width="500">
+  
+  <Window.Resources>
+    <local:BusinessObject x:Key="BusinessObject"/>
+  </Window.Resources>
+  
+  <Grid>
+    <pg:PropertyGrid SelectedObject="{StaticResource BusinessObject}" ShowReadOnlyProperties="True"/>
+  </Grid>
+</Window>

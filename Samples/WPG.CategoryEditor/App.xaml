@@ -1,0 +1,49 @@
+﻿<Application 
+  x:Class="CategoryEditor.App"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="clr-namespace:CategoryEditor"
+  StartupUri="Window1.xaml">
+  <Application.Resources>
+    
+    <local:FontList x:Key="FontFamilyList"/>
+    <local:FontSizeList x:Key="FontSizeList"/>
+    <local:FontStyleConverter x:Key="FontStyleConverter"/>
+    <local:FontWeightConverter x:Key="FontWeightConverter"/>
+
+    <DataTemplate x:Key="{x:Static local:EditorKeys.TextCategoryEditorKey}">
+      <StackPanel Margin="5">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <ComboBox 
+                    Grid.Column="0"
+                    Margin="2"
+                    ItemsSource="{Binding Source={StaticResource FontFamilyList}}" 
+                    DisplayMemberPath="FamilyNames.Values[0]"
+                    SelectedItem="{Binding [FontFamily].PropertyValue.Value}"/>
+          <ComboBox 
+                    Grid.Column="1"
+                    Margin="2"
+                    ItemsSource="{Binding Source={StaticResource FontSizeList}}"
+                    SelectedItem="{Binding [FontSize].PropertyValue.Value}"/>
+        </Grid>
+        <StackPanel Orientation="Horizontal">
+          <CheckBox 
+                    Margin="2"
+                    Content="Bold"
+                    IsChecked="{Binding Path=[FontWeight].PropertyValue.Value, 
+                                        Converter={StaticResource FontWeightConverter}}"/>
+          <CheckBox 
+                    Margin="2"
+                    Content="Italic"
+                    IsChecked="{Binding Path=[FontStyle].PropertyValue.Value, 
+                                        Converter={StaticResource FontStyleConverter}}"/>
+        </StackPanel>
+      </StackPanel>
+    </DataTemplate>
+
+  </Application.Resources>
+</Application>
