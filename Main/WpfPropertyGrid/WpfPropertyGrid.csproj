@@ -8,7 +8,7 @@
     <ProjectGuid>{5A48B67F-1E7E-4ED6-A201-F6CC8E7E6788}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sytem.Windows.Controls.WpfPropertyGrid</RootNamespace>
+    <RootNamespace>System.Windows.Controls.WpfPropertyGrid</RootNamespace>
     <AssemblyName>System.Windows.Controls.WpfPropertyGrid</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

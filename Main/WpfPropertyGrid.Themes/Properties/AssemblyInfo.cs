@@ -9,11 +9,11 @@ using System.Windows.Markup;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("WpfPropertyGrid.Themes")]
-[assembly: AssemblyDescription("Theming for PRoperty Grid")]
+[assembly: AssemblyDescription("Themes for WPF Property Grid")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("WpfPropertyGrid.Themes")]
-[assembly: AssemblyCopyright("Copyright © 2010 Denis Vuyka")]
+[assembly: AssemblyCopyright("Copyright © 2010-2011 Denys Vuika")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sytem.Windows.Controls.WpfPropertyGrid.Properties {
+namespace System.Windows.Controls.WpfPropertyGrid.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Sytem.Windows.Controls.WpfPropertyGrid.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sytem.Windows.Controls.WpfPropertyGrid.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Windows.Controls.WpfPropertyGrid.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

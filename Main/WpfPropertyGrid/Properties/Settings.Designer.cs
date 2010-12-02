@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sytem.Windows.Controls.WpfPropertyGrid.Properties {
+namespace System.Windows.Controls.WpfPropertyGrid.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
