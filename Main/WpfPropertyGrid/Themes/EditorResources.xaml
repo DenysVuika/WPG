@@ -29,7 +29,7 @@
   <DataTemplate x:Key="{x:Static local:EditorKeys.DefaultEditorKey}">
     <TextBox
 			x:Name="PART_editor"
-			Text="{Binding Value, Mode=TwoWay}"
+			Text="{Binding StringValue, Mode=TwoWay}"
 			IsReadOnly="{Binding IsReadOnly}"
 			local:TextBoxExtender.CommitOnEnter="true"
 			local:TextBoxExtender.RollbackOnEscape="true"
