@@ -553,6 +553,19 @@ namespace System.Windows.Controls.WpfPropertyGrid
 
         OnPropertyChanged("Properties");
         OnPropertyChanged("HasProperties");
+        OnPropertyChanged("BrowsableProperties");
+      }
+    }
+
+    /// <summary>
+    /// Enumerates the properties that should be visible for user
+    /// </summary>
+    public IEnumerable<PropertyItem> BrowsableProperties
+    {
+      get
+      {
+        foreach (var property in _properties)
+          if (property.IsBrowsable) yield return property;
       }
     }
 
@@ -616,6 +629,19 @@ namespace System.Windows.Controls.WpfPropertyGrid
 
         OnPropertyChanged("Categories");
         OnPropertyChanged("HasCategories");
+        OnPropertyChanged("BrowsableCategories");
+      }
+    }
+
+    /// <summary>
+    /// Enumerates the categories that should be visible for user.
+    /// </summary>
+    public IEnumerable<CategoryItem> BrowsableCategories
+    {
+      get
+      {
+        foreach (var category in _categories)
+          if (category.IsBrowsable) yield return category;
       }
     }
 
