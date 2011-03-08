@@ -564,8 +564,11 @@ namespace System.Windows.Controls.WpfPropertyGrid
     {
       get
       {
-        foreach (var property in _properties)
-          if (property.IsBrowsable) yield return property;
+        if (_properties != null)
+        {
+          foreach (var property in _properties)
+            if (property.IsBrowsable) yield return property;
+        }
       }
     }
 
@@ -640,8 +643,11 @@ namespace System.Windows.Controls.WpfPropertyGrid
     {
       get
       {
-        foreach (var category in _categories)
-          if (category.IsBrowsable) yield return category;
+        if (_categories != null)
+        {
+          foreach (var category in _categories)
+            if (category.IsBrowsable) yield return category;
+        }
       }
     }
 
