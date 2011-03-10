@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPG.ComplexProperty", "Samp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPG.DialogEditor", "Samples\WPG.DialogEditor\WPG.DialogEditor.csproj", "{A55E2D8D-C3B1-48A2-94AD-73F0EBF2B80D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPG.ExtendedEditor", "WPG.ExtendedEditor\WPG.ExtendedEditor.csproj", "{DD275BBE-4860-45FA-AA0A-6DFC070EF61C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPG.ExtendedEditor", "Samples\WPG.ExtendedEditor\WPG.ExtendedEditor.csproj", "{DD275BBE-4860-45FA-AA0A-6DFC070EF61C}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

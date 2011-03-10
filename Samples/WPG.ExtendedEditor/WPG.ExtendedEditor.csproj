@@ -94,7 +94,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Main\WpfPropertyGrid\WpfPropertyGrid.csproj">
+    <ProjectReference Include="..\..\Main\WpfPropertyGrid\WpfPropertyGrid.csproj">
       <Project>{5A48B67F-1E7E-4ED6-A201-F6CC8E7E6788}</Project>
       <Name>WpfPropertyGrid</Name>
     </ProjectReference>
