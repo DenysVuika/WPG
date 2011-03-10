@@ -159,6 +159,7 @@
     <Compile Include="DataResource.cs" />
     <Compile Include="Design\GridEntryContainer.cs" />
     <Compile Include="Design\GridEntryLayout.cs" />
+    <Compile Include="Design\TabbedLayoutTemplateSelector.cs" />
     <Compile Include="EditorCollection.cs" />
     <Compile Include="Controls\SearchTextBox.cs" />
     <Compile Include="Design\CategoryContainer.cs" />

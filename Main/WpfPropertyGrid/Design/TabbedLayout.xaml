@@ -7,7 +7,12 @@
   
   <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
 
-  <Style TargetType="{x:Type design:TabbedLayout}" BasedOn="{StaticResource {x:Type TabControl}}"/>  
+  <Style TargetType="{x:Type design:TabbedLayout}" BasedOn="{StaticResource {x:Type TabControl}}">
+    <Style.Resources>
+      <design:TabbedLayoutTemplateSelector x:Key="TabbedLayoutTemplateSelector"/>
+    </Style.Resources>
+    <Setter Property="ContentTemplateSelector" Value="{StaticResource TabbedLayoutTemplateSelector}"/>
+  </Style> 
     
   <Style x:Key="TabItemFocusVisual">
     <Setter Property="Control.Template">

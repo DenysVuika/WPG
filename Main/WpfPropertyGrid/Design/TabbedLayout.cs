@@ -25,6 +25,8 @@ namespace System.Windows.Controls.WpfPropertyGrid.Design
   /// </summary>
   public class TabbedLayout : TabControl
   {
+    private static readonly IValueConverter visibilityConverter = new BooleanToVisibilityConverter();
+
     /// <summary>
     /// The fallback header for a tab if no header custom is provided.
     /// </summary>
@@ -229,7 +231,60 @@ namespace System.Windows.Controls.WpfPropertyGrid.Design
 
           tab.SetBinding(HeaderedContentControl.HeaderProperty, bHeader);
         }
+
+        if (item is GridEntry)
+        {
+          var binding = new Binding("IsVisible")
+          {
+            Source = item,
+            Mode = BindingMode.OneWay,
+            UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
+            Converter = visibilityConverter
+          };
+          tab.SetBinding(UIElement.VisibilityProperty, binding);
+        }
+
+        tab.IsVisibleChanged += OnTabVisibilityChanged;
       }
+    }
+
+    private void OnTabVisibilityChanged(object sender, DependencyPropertyChangedEventArgs e)
+    {
+      var tabItem = sender as TabbedLayoutItem;
+      if (tabItem == null || tabItem.DataContext == null) return;
+
+      bool isVisible = (bool)e.NewValue;
+
+
+      if (isVisible && GetVisibleEntryCount() == 1)
+      {
+        var visibleEntry = GetFirstVisibleEntry();
+        if (SelectedItem != visibleEntry)
+          SelectedItem = visibleEntry;
+      }
+      else if (tabItem.IsSelected)
+      {
+        if (GetVisibleEntryCount() == 0)
+        {
+          SelectedItem = null;
+          return;
+        }
+
+        if (Items.IndexOf(tabItem.DataContext) > 0)
+          SelectedIndex--;
+        else if (Items.Count > 1)
+          SelectedIndex++;
+      }
+    }
+
+    private GridEntry GetFirstVisibleEntry()
+    {
+      return Items.OfType<GridEntry>().FirstOrDefault(item => item.IsVisible);
+    }
+
+    private int GetVisibleEntryCount()
+    {
+      return Items.OfType<GridEntry>().Count(item => item.IsVisible);
     }
 
     /// <summary>
