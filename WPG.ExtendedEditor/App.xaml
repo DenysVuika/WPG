@@ -1,0 +1,29 @@
+﻿<Application 
+  x:Class="WPG.ExtendedEditor.App"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:pg="http://schemas.denisvuyka.wordpress.com/wpfpropertygrid"
+  StartupUri="MainWindow.xaml">
+
+  <Application.Resources>
+    <DataTemplate x:Key="TextEditor_Inline">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="0" Text="{Binding StringValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
+        <Button Grid.Column="1" Margin="2,0,0,0" Content="[...]" Width="20" Command="pg:PropertyEditorCommands.ShowExtendedEditor" CommandParameter="{Binding}"/>
+      </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TextEditor_Extended">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Text="{Binding StringValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" TextWrapping="Wrap"/>
+      </Grid>
+    </DataTemplate>
+  </Application.Resources>
+</Application>
