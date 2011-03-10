@@ -41,9 +41,18 @@ namespace System.Windows.Controls.WpfPropertyGrid
       {
         if (_isBrowsable == value) return;
         _isBrowsable = value;
-        OnPropertyChanged("IsBrowsable");        
+        OnPropertyChanged("IsBrowsable");
+        OnPropertyChanged("IsVisible");
         OnBrowsableChanged();
       }
+    }
+
+    /// <summary>
+    /// Gets a value indicating whether this instance should be visible.
+    /// </summary>
+    public virtual bool IsVisible
+    {
+      get { return IsBrowsable && MatchesFilter; }
     }
 
     /// <summary>
@@ -183,6 +192,7 @@ namespace System.Windows.Controls.WpfPropertyGrid
         if (_matchesFilter == value) return;
         _matchesFilter = value;        
         OnPropertyChanged("MatchesFilter");
+        OnPropertyChanged("IsVisible");
       }
     }
 

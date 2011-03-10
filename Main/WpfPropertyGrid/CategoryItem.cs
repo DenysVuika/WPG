@@ -111,6 +111,14 @@ namespace System.Windows.Controls.WpfPropertyGrid
         OnPropertyChanged("HasVisibleProperties");
       }
     }
+
+    /// <summary>
+    /// Gets a value indicating whether this instance should be visible.
+    /// </summary>
+    public override bool IsVisible
+    {
+      get { return base.IsVisible && HasVisibleProperties; }
+    }
     #endregion
 
     #region ctor
@@ -196,9 +204,8 @@ namespace System.Windows.Controls.WpfPropertyGrid
           propertiesMatch = true;
       }
 
-      MatchesFilter = propertiesMatch;
-
       HasVisibleProperties = _properties.Any(IsVisibleProperty);
+      MatchesFilter = propertiesMatch;      
 
       if (propertiesMatch && !IsExpanded)
         IsExpanded = true;
