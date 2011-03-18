@@ -176,6 +176,7 @@
     <Compile Include="GridEntryCollection.cs" />
     <Compile Include="KnownTypes.cs" />
     <Compile Include="Metadata\CategoryEditorAttribute.cs" />
+    <Compile Include="Metadata\CategoryOrderAttribute.cs" />
     <Compile Include="Metadata\PropertyEditorAttribute.cs" />
     <Compile Include="MetadataRepository.cs" />
     <Compile Include="PropertyEditingEventArgs.cs" />

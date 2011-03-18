@@ -83,6 +83,17 @@ namespace System.Windows.Controls.WpfPropertyGrid
         if (_categories != null && _categories.Count > 0)
           CopyCategoryFrom(_categories, categories);
 
+        // Fetch and apply category orders
+        var categoryOrders = PropertyGridUtils.GetAttributes<CategoryOrderAttribute>(SelectedObject);
+        foreach (var orderAttribute in categoryOrders)
+        {
+          var category = categories[orderAttribute.Category];
+          // don't apply Order if it was applied before (Order equals zero or more), 
+          // so the first discovered Order value for the same category wins
+          if (category != null && category.Order < 0)
+            category.Order = orderAttribute.Order;
+        }
+
         Categories = categories; //new CategoryCollection(CollectCategories(properties));
         Properties = new GridEntryCollection<PropertyItem>(properties);
 

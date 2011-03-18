@@ -45,7 +45,13 @@ namespace System.Windows.Controls.WpfPropertyGrid
       if (x == null) return -1;
       if (y == null) return 1;
 
-      return string.Compare(x.Name, y.Name, StringComparison.OrdinalIgnoreCase);
+      int leftOrder = x.Order;
+      int rightOrder = y.Order;
+
+      if (leftOrder == rightOrder)
+        return string.Compare(x.Name, y.Name, StringComparison.OrdinalIgnoreCase);
+
+      return leftOrder.CompareTo(rightOrder);
     }
 
     #endregion

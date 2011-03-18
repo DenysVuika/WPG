@@ -32,6 +32,23 @@ namespace System.Windows.Controls.WpfPropertyGrid
     /// </summary>
     /// <value>The attribute.</value>
     public Attribute Attribute { get; set; }
+
+    #region Order
+    private int _order = -1;
+    /// <summary>
+    /// Gets or sets the order of the category.
+    /// </summary>
+    public int Order
+    {
+      get { return _order; }
+      set
+      {
+        if (_order == value) return;
+        _order = value;
+        OnPropertyChanged("Order");
+      }
+    } 
+    #endregion
         
     #region IsExpanded
     private bool _isExpanded = true;

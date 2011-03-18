@@ -1,12 +1,15 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Controls.WpfPropertyGrid;
 
 namespace CategoryEditor
 {
   /// <summary>
   /// Sample business object
   /// </summary>
+  [CategoryOrder("Text", 0)]
+  [CategoryOrder("Misc", 1)]
   public class BusinessObject : INotifyPropertyChanged
   {
     #region Fields
