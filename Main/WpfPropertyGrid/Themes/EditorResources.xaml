@@ -27,8 +27,7 @@
 
   <!--Note that commit on typing cannot work together with the roolback since every keystroke is committed and the roolback value is lost-->
   <DataTemplate x:Key="{x:Static local:EditorKeys.DefaultEditorKey}">
-    <TextBox
-			x:Name="PART_editor"
+    <TextBox x:Name="PART_editor" AutomationProperties.AutomationId="{Binding ParentProperty.Name}"
 			Text="{Binding StringValue, Mode=TwoWay}"
 			IsReadOnly="{Binding IsReadOnly}"
 			local:TextBoxExtender.CommitOnEnter="true"
@@ -38,8 +37,7 @@
   </DataTemplate>
 
   <DataTemplate x:Key="{x:Static local:EditorKeys.EnumEditorKey}">
-    <controls:EnumDropdown
-      x:Name="PART_editor"
+    <controls:EnumDropdown x:Name="PART_editor" AutomationProperties.AutomationId="{Binding ParentProperty.Name}"
       Style="{DynamicResource {x:Type ComboBox}}"
       PropertyValue="{Binding}"
       IsEnabled="{Binding IsEditable}">
@@ -52,12 +50,11 @@
   </DataTemplate>
 
   <DataTemplate x:Key="{x:Static local:EditorKeys.BooleanEditorKey}">
-    <CheckBox x:Name="PART_editor" IsChecked="{Binding Value}" IsEnabled="{Binding IsEditable}" />
+		<CheckBox x:Name="PART_editor" AutomationProperties.AutomationId="{Binding ParentProperty.Name}" IsChecked="{Binding Value}" IsEnabled="{Binding IsEditable}" />
   </DataTemplate>
 
   <DataTemplate x:Key="{x:Static local:EditorKeys.FontFamilyEditorKey}">
-    <ComboBox
-      x:Name="PART_editor"
+    <ComboBox x:Name="PART_editor" AutomationProperties.AutomationId="{Binding ParentProperty.Name}"
       SelectedValue="{Binding Value}"
       ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}"
       IsEnabled="{Binding IsEditable}">
@@ -81,8 +78,7 @@
   </DataTemplate>
 
   <DataTemplate x:Key="{x:Static local:EditorKeys.BrushEditorKey}">
-    <ComboBox
-      x:Name="PART_editor"
+    <ComboBox x:Name="PART_editor" AutomationProperties.AutomationId="{Binding ParentProperty.Name}"
       Text="{Binding Path=StringValue, Mode=TwoWay, Converter={StaticResource NullValueConverter}}"
       ItemsSource="{Binding Source={StaticResource NamedColorList}}"
       ItemTemplate="{DynamicResource {x:Static local:EditorKeys.NamedColorEditorKey}}"
@@ -93,7 +89,7 @@
 
 
   <DataTemplate x:Key="{x:Static local:EditorKeys.SliderEditorKey}">
-    <Slider x:Name="PART_editor"
+		<Slider x:Name="PART_editor" AutomationProperties.AutomationId="{Binding ParentProperty.Name}"
             Value="{Binding Value}"
             Minimum="{Binding ParentProperty.Metadata[NumberRange].Minimum, FallbackValue=0}"
             Maximum="{Binding ParentProperty.Metadata[NumberRange].Maximum, FallbackValue=100}"
@@ -117,8 +113,7 @@
   </DataTemplate>
 
   <DataTemplate x:Key="{x:Static local:EditorKeys.DoubleEditorKey}">
-    <controls:DoubleEditor
-        x:Name="PART_editor"
+    <controls:DoubleEditor x:Name="PART_editor" AutomationProperties.AutomationId="{Binding ParentProperty.Name}"
         Value="{Binding Value, Mode=TwoWay}"
         Minimum="{Binding ParentProperty.Metadata[NumberRange].Minimum}"
         Maximum="{Binding ParentProperty.Metadata[NumberRange].Maximum}"
